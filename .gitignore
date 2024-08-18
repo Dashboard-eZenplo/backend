@@ -1,1 +1,108 @@
-/venv
+# Environments
+venv/
+.env
+
+# Python specific
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Caches
+*.sqlite3
+*.db
+*.log
+*.pot
+*.pyc
+.cache/
+*.mypy_cache/
+*.pytest_cache/
+__pycache__/
+*.py[cod]
+*.pyo
+.mypy_cache/
+.pytest_cache/
+.coverage
+.pytest_cache/
+.coverage.*
+
+# PyInstaller
+#  Usually these files are written by a Python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+noxfile-configs_*/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+*.prof
+.prof
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# macOS
+.DS_Store
+
+# Virtual environments
+venv/
+ENV/
+env.bak/
+env/
+
+
+# Temporary files
+*.bak
+*.swp
+*.temp
+*.tmp
+~*
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Pyre type checker
+.pyre/
+
+# Pyright type checker
+.pyright/
+
+# Other files
+*.bak
+*.swp
+*.tmp
+*.temp
+*~
