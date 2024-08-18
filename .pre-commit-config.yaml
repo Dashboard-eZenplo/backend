@@ -1,0 +1,39 @@
+repos:
+  - repo: local
+    hooks:
+      - id: black
+        name: black
+        entry: black
+        language: system
+        types: [python]
+        args: ["--line-length", "88"]
+
+      - id: isort
+        name: isort
+        entry: isort
+        language: system
+        types: [python]
+        args: ["--profile", "black"]
+
+      - id: flake8
+        name: flake8
+        entry: flake8
+        language: system
+        types: [python]
+        args: ["--max-line-length=88", "--ignore=E203,W503"]
+
+      - id: autoflake
+        name: autoflake
+        entry: autoflake
+        language: system
+        types: [python]
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v2.3.2 
+    hooks:
+      - id: prettier
+        name: prettier-json
+        entry: prettier --write
+        language: node
+        types: [json]
+        args: ["--tab-width", "4"]
