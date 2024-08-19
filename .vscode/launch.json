@@ -1,11 +1,6 @@
 {
-    "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: FastAPI (Uvicorn)",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "uvicorn",
             "args": [
                 "app.main:app",
                 "--host",
@@ -17,7 +12,12 @@
             "console": "integratedTerminal",
             "env": {
                 "PYTHONPATH": "${workspaceFolder}"
-            }
+            },
+            "module": "uvicorn",
+            "name": "Python: FastAPI (Uvicorn)",
+            "request": "launch",
+            "type": "debugpy"
         }
-    ]
+    ],
+    "version": "0.2.0"
 }
