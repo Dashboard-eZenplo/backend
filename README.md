@@ -15,7 +15,6 @@ Para usuários de Windows, recomenda-se fortemente o uso do WSL para configurar 
     ```powershell
     wsl --install
     ```
-
 3. Reinicie o seu computador para que as alterações tenham efeito.
 
 ### 3. Instalação do Ubuntu via Microsoft Store (Windows)
@@ -24,10 +23,19 @@ Para usuários de Windows, recomenda-se fortemente o uso do WSL para configurar 
 2. Pesquise por **Ubuntu** e selecione a versão mais recente (recomenda-se o Ubuntu 20.04 ou 22.04).
 3. Clique em **Obter** e, em seguida, **Instalar**.
 4. Após a instalação, abra o Ubuntu a partir do menu Iniciar e siga as instruções para configurar seu usuário e senha.
+5. Fixe o Ubuntu na barra de tarefas, clicando nele que será aberto o terminal corretamente.
 
 ## 4. Instalação do Python 3.10.12 (Windows e macOS)
 
 ### No Windows (via WSL/Ubuntu):
+
+0. Instalação do terminal **oh my zsh** que facilitará o desenvolvimento:
+
+    ```wsl
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    ```
+    - Documentação do terminal: https://github.com/ohmyzsh/ohmyzsh/wiki
+    - Feche e abra o WSL após instalação para aplicar corretamente as mudanças.
 
 1. Atualize a lista de pacotes:
 
@@ -35,26 +43,20 @@ Para usuários de Windows, recomenda-se fortemente o uso do WSL para configurar 
     sudo apt-get update
     ```
 
-2. Instale as dependências necessárias:
+2. Instale o Python 3.10.12:
 
     ```bash
-    sudo apt-get install software-properties-common
+    sudo apt update
+    sudo apt install python3.10
     ```
 
-3. Adicione o repositório de versões do Python:
+    - _Caso tenha sido instalada outra versão de python 3.10@:_
 
     ```bash
-    sudo add-apt-repository ppa:deadsnakes/ppa
-    sudo apt-get update
+    sudo apt install python3.10=3.10.12
     ```
 
-4. Instale o Python 3.10.12:
-
-    ```bash
-    sudo apt-get install python3.10 python3.10-venv python3.10-dev
-    ```
-
-5. Verifique se a instalação foi bem-sucedida:
+3. Verifique se a instalação foi bem-sucedida:
 
     ```bash
     python3.10 --version
@@ -87,8 +89,8 @@ Para usuários de Windows, recomenda-se fortemente o uso do WSL para configurar 
 Clone o repositório do projeto para sua máquina local:
 
 ```bash
-git clone https://seu-repositorio.git
-cd nome-do-projeto
+git clone https://tools.ages.pucrs.br/dashboard-ezenplo/backend.git
+cd backend
 ```
 
 ## 6. Criação do Ambiente Virtual (Windows e macOS)
@@ -121,4 +123,4 @@ pip install pre-commit
 pre-commit install
 ```
 
-**Agora, seu ambiente de desenvolvimento está configurado e pronto para uso. Lembre-se de SEMPRE ativar o ambiente virtual sempre que trabalhar no projeto, usando o comando source venv/bin/activate.**
+**Agora, seu ambiente de desenvolvimento está configurado e pronto para uso. Lembre-se de SEMPRE ativar o ambiente virtual quando trabalhar no projeto, usando o comando source venv/bin/activate.**
