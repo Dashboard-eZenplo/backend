@@ -1,39 +1,68 @@
 repos:
+  - repo: https://github.com/PyCQA/isort
+    rev: '5.12.0'
+    hooks:
+    - id: isort
+      args: [
+        "-q",
+        "--overwrite-in-place"
+      ]
+
+  - repo: https://github.com/psf/black
+    rev: '23.7.0'
+    hooks:
+    - id: black
+      args: [
+        "--quiet"
+      ]
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: '6.0.0'
+    hooks:
+    - id: flake8
+      additional_dependencies:
+        - "flake8-html"
+      args: [
+        "--extend-ignore=W0104,E501",
+        "--exit-zero"
+      ]
+
+  - repo: https://github.com/PyCQA/bandit
+    rev: '1.7.5'
+    hooks:
+    - id: bandit
+      args: [
+        "-r",
+        "-o=bandit_report.txt",
+        "-f=txt",
+        "--exit-zero",
+        "-q"
+      ]
+
   - repo: local
     hooks:
-      - id: black
-        name: black
-        entry: black
-        language: system
-        types: [python]
-        args: ["--line-length", "88"]
+      - id: static-check-autoflake
+        name: Remove all unused code
+        entry: autoflake --remove-all-unused-imports --ignore-init-module-imports --in-place
+        language: python
+        additional_dependencies: ['autoflake']
 
-      - id: isort
-        name: isort
-        entry: isort
-        language: system
-        types: [python]
-        args: ["--profile", "black"]
-
-      - id: flake8
-        name: flake8
-        entry: flake8
-        language: system
-        types: [python]
-        args: ["--max-line-length=88", "--ignore=E203,W503"]
-
-      - id: autoflake
-        name: autoflake
-        entry: autoflake
-        language: system
-        types: [python]
-
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v2.3.2 
+  - repo: https://github.com/PyCQA/pylint
+    rev: "v3.0.2"
     hooks:
-      - id: prettier
-        name: prettier-json
-        entry: prettier --write
-        language: node
-        types: [json]
-        args: ["--tab-width", "4"]
+      - id: pylint
+        args:
+          [
+            "--recursive=yes",
+            "--persistent=yes",
+            "--exit-zero",
+          ]
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: "v4.5.0"
+    hooks:
+      - id: pretty-format-json
+        args: ["--autofix", "--indent=4", "--no-ensure-ascii"]
+
+default_language_version:
+  python: python3
+
