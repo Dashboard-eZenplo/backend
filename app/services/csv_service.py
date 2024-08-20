@@ -1,29 +1,31 @@
-from fastapi import UploadFile
+from fastapi import HTTPException, UploadFile
 
-from app.utils.file_handler import read_csv_file, save_temp_file
+from app.utils.file_handler import read_csv_file, save_file
 
 
 async def process_csv(file: UploadFile):
     """
     Processa o arquivo CSV enviado, valida os dados e retorna os resultados.
     """
-    temp_file_path = await save_temp_file(file)
+    file_path = await save_file(file)  # Salva o arquivo
 
     try:
-        rows = read_csv_file(temp_file_path)
-        processed_data = []
+        rows = read_csv_file(file_path)
 
-        for row in rows:
-            # Exemplo: Simples validação de campos
-            processed_data.append(
-                {
-                    "name": row.get("name"),
-                    "description": row.get("description"),
-                    "price": float(row.get("price", 0)),
-                    "tax": float(row.get("tax", 0)),
-                }
+        if len(rows) == 0:
+            raise HTTPException(
+                status_code=422, detail="CSV inválido. O arquivo deve conter dados."
             )
 
-        return processed_data
-    finally:
-        temp_file_path.unlink()  # Remove o arquivo temporário após o processamento
+        required_columns = ["Name", "Age", "Email"]  # TODO - Seria bom tornar dinâmico
+        if not all(key in rows[0].keys() for key in required_columns):
+            raise HTTPException(
+                status_code=422, detail="CSV inválido. Colunas obrigatórias ausentes."
+            )
+
+        return rows
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=500, detail=f"Erro {str(e)} ao processar o CSV."
+        )
