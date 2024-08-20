@@ -7,7 +7,7 @@ from app.services.csv_service import process_csv
 
 router = APIRouter()
 
-CSV_BASE_PATH = Path("app/static/base_template.csv")
+CSV_BASE_PATH = Path("app/static/template/base_template.csv")
 
 
 @router.get("/download-csv-template/", response_class=FileResponse)
@@ -28,7 +28,7 @@ async def upload_csv(file: UploadFile = File(...)):
     """
     Rota para receber e processar um arquivo CSV enviado pelo frontend.
     """
-    if file.content_type != "text/csv":
+    if not file.filename.endswith(".csv"):
         raise HTTPException(status_code=400, detail="O arquivo deve ser um CSV.")
 
     result = await process_csv(file)
