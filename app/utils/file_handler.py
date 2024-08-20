@@ -3,20 +3,29 @@ from pathlib import Path
 
 from fastapi import UploadFile
 
-TEMP_DIR = Path("app/static/temp_files")
+# Diretório para armazenar arquivos permanentemente
+UPLOAD_DIR = Path("app/static/uploads")
 
 
-async def save_temp_file(file: UploadFile) -> Path:
+async def save_file(file: UploadFile) -> Path:
     """
-    Salva o arquivo recebido como temporário no sistema de arquivos.
+    Salva o arquivo recebido permanentemente no sistema de arquivos.
+    Apaga todos os arquivos existentes na pasta de armazenamento antes de salvar o novo.
     """
-    TEMP_DIR.mkdir(parents=True, exist_ok=True)
-    temp_file_path = TEMP_DIR / file.filename
+    UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
-    with open(temp_file_path, "wb") as buffer:
-        buffer.write(await file.read())
+    # Apaga todos os arquivos existentes na pasta de armazenamento permanente
+    for existing_file in UPLOAD_DIR.glob("*"):
+        if existing_file.is_file():
+            existing_file.unlink()
 
-    return temp_file_path
+    file_path = UPLOAD_DIR / file.filename
+
+    # Salva o novo arquivo
+    with open(file_path, "wb") as buffer:
+        buffer.write(await file.read())  # Aguarda a leitura do arquivo
+
+    return file_path
 
 
 def read_csv_file(file_path: Path):
