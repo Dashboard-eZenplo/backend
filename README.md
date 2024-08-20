@@ -123,4 +123,20 @@ pip install pre-commit
 pre-commit install
 ```
 
-**Agora, seu ambiente de desenvolvimento está configurado e pronto para uso. Lembre-se de SEMPRE ativar o ambiente virtual quando trabalhar no projeto, usando o comando source venv/bin/activate.**
+**Agora, seu ambiente de desenvolvimento está configurado e pronto para uso. Lembre-se de SEMPRE ativar o ambiente virtual quando trabalhar no projeto, usando o comando:**
+```bash
+ source venv/bin/activate.
+ ```
+
+
+---
+
+# Testando localmente
+
+## 1. Rodar a API
+
+Para rodar a API, basta ir ao menu lateral localizado à esquerda e clicar no ícone de **Run and Debug** (ou apertar **CTRL/COMMAND+SHIFT+D**), depois na parte superior esquerda clicar no **play verde** onde está escrito ao lado **Python: FastAPI (Uvicorn)**. Voce perceberá que um terminar vai abrir e passar a apresentar os LOGS da API em tempo real.
+
+## 2. Testar os Endpoints
+
+Para testar os Endpoits, com a API rodando, pode-se tanto utilizar o Postman (ou algum programa similar) como também via browser pelo endereço: **localhost/8000/docs#/**
