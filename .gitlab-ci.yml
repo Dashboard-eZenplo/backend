@@ -20,18 +20,18 @@ build:
   script:
     - echo "Build step here if needed"
   tags:
-    - ezenplo
+    - ezenplo-backend
 
 lint:
   stage: lint
   script:
     - pre-commit run --all-files --show-diff-on-failure
   tags:
-    - ezenplo
+    - ezenplo-backend
 
 unit-test:
   stage: test
   script:
     - pytest tests/
   tags:
-    - ezenplo
+    - ezenplo-backend
