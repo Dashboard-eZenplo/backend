@@ -143,7 +143,7 @@ Para testar os Endpoits, com a API rodando, pode-se tanto utilizar o Postman (ou
 
 # GitFlow
 
-## Main:
+## Main
 - Não acontece desenvolvimento nesta branch. É a branch de produção, onde o usuário terá acesso.
 
 ## Dev
