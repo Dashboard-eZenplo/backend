@@ -140,3 +140,19 @@ Para rodar a API, basta ir ao menu lateral localizado à esquerda e clicar no í
 ## 2. Testar os Endpoints
 
 Para testar os Endpoits, com a API rodando, pode-se tanto utilizar o Postman (ou algum programa similar) como também via browser pelo endereço: **localhost/8000/docs#/**
+
+# GitFlow
+
+## Main
+- Não acontece desenvolvimento nesta branch. É a branch de produção, onde o usuário terá acesso.
+
+## Dev
+- É a partir de onde as branchs de desenvolvimento serão criadas. Os Merge Requests (MRs) serão abertos para ela.
+
+## Branchs de desenolvimento
+- Aonde o desenvolvimento acontece. O nome da branch será padronizado como: **US-[ID da US] - [Breve descrição]**
+
+## Exemplo visual:
+Os nomes das branchs da imagem não são os mesmos do projeto, é somente uma representação.
+<img src = "https://codigomaromba.com/wp-content/uploads/2019/01/gitflow-1.png?w=640">
+
