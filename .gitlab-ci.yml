@@ -25,7 +25,7 @@ build:
 lint:
   stage: lint
   script:
-    - pre-commit run --all-files --show-diff-on-failure
+    - pre-commit run --all-files
   tags:
     - ezenplo-backend
 
