@@ -2,7 +2,6 @@
 
 Este arquivo `README.md` fornece um guia detalhado para configurar o ambiente de desenvolvimento tanto no Windows (utilizando WSL) quanto no macOS. Siga as instruções específicas para o seu sistema operacional para garantir que tudo funcione corretamente.
 
-
 ## 1. Recomendação: Utilização do WSL para Desenvolvimento (Windows)
 
 Para usuários de Windows, recomenda-se fortemente o uso do WSL para configurar o ambiente de desenvolvimento. O WSL permite que você execute um sistema Linux diretamente no Windows, facilitando a instalação e o uso de ferramentas de desenvolvimento que são nativas do Linux.
@@ -12,9 +11,10 @@ Para usuários de Windows, recomenda-se fortemente o uso do WSL para configurar 
 1. Abra o PowerShell como Administrador.
 2. Execute o seguinte comando para instalar o WSL:
 
-    ```powershell
-    wsl --install
-    ```
+   ```powershell
+   wsl --install
+   ```
+
 3. Reinicie o seu computador para que as alterações tenham efeito.
 
 ### 3. Instalação do Ubuntu via Microsoft Store (Windows)
@@ -31,58 +31,59 @@ Para usuários de Windows, recomenda-se fortemente o uso do WSL para configurar 
 
 0. Instalação do terminal **oh my zsh** que facilitará o desenvolvimento:
 
-    ```wsl
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    ```
-    - Documentação do terminal: https://github.com/ohmyzsh/ohmyzsh/wiki
-    - Feche e abra o WSL após instalação para aplicar corretamente as mudanças.
+   ```wsl
+   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+   ```
+
+   - Documentação do terminal: https://github.com/ohmyzsh/ohmyzsh/wiki
+   - Feche e abra o WSL após instalação para aplicar corretamente as mudanças.
 
 1. Atualize a lista de pacotes:
 
-    ```bash
-    sudo apt-get update
-    ```
+   ```bash
+   sudo apt-get update
+   ```
 
 2. Instale o Python 3.10.12:
 
-    ```bash
-    sudo apt update
-    sudo apt install python3.10
-    ```
+   ```bash
+   sudo apt update
+   sudo apt install python3.10
+   ```
 
-    - _Caso tenha sido instalada outra versão de python 3.10@:_
+   - _Caso tenha sido instalada outra versão de python 3.10@:_
 
-    ```bash
-    sudo apt install python3.10=3.10.12
-    ```
+   ```bash
+   sudo apt install python3.10=3.10.12
+   ```
 
 3. Verifique se a instalação foi bem-sucedida:
 
-    ```bash
-    python3.10 --version
-    ```
+   ```bash
+   python3.10 --version
+   ```
 
 ### No macOS:
 
 1. **Instale o Homebrew** (se ainda não tiver instalado):
 
-    Abra o terminal e execute:
+   Abra o terminal e execute:
 
-    ```bash
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    ```
+   ```bash
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
 
 2. **Instale o Python 3.10.12** via Homebrew:
 
-    ```bash
-    brew install python@3.10
-    ```
+   ```bash
+   brew install python@3.10
+   ```
 
 3. **Verifique a instalação**:
 
-    ```bash
-    python3.10 --version
-    ```
+   ```bash
+   python3.10 --version
+   ```
 
 ## 5. Clonar o Projeto (Windows e macOS)
 
@@ -98,6 +99,7 @@ cd backend
 ```bash
 python3 -m venv venv
 ```
+
 ### Ative o Ambiente Virtual
 
 - No WSL/Ubuntu ou macOS:
@@ -124,10 +126,10 @@ pre-commit install
 ```
 
 **Agora, seu ambiente de desenvolvimento está configurado e pronto para uso. Lembre-se de SEMPRE ativar o ambiente virtual quando trabalhar no projeto, usando o comando:**
+
 ```bash
  source venv/bin/activate.
- ```
-
+```
 
 ---
 
@@ -144,15 +146,18 @@ Para testar os Endpoits, com a API rodando, pode-se tanto utilizar o Postman (ou
 # GitFlow
 
 ## Main
+
 - Não acontece desenvolvimento nesta branch. É a branch de produção, onde o usuário terá acesso.
 
 ## Dev
+
 - É a partir de onde as branchs de desenvolvimento serão criadas. Os Merge Requests (MRs) serão abertos para ela.
 
 ## Branchs de desenolvimento
+
 - Aonde o desenvolvimento acontece. O nome da branch será padronizado como: **US-[ID da US] - [Breve descrição]**
 
 ## Exemplo visual:
+
 Os nomes das branchs da imagem não são os mesmos do projeto, é somente uma representação.
 <img src = "https://codigomaromba.com/wp-content/uploads/2019/01/gitflow-1.png?w=640">
-
