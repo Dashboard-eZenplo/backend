@@ -1,0 +1,37 @@
+image: python:3.10-alpine
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - .venv/
+
+stages:
+  - build
+  - lint
+  - test
+
+before_script:
+  - python -m venv .venv
+  - source .venv/bin/activate
+  - pip install -r requirements.txt
+
+build:
+  stage: build
+  script:
+    - echo "Build step here if needed"
+  tags:
+    - ezenplo
+
+lint:
+  stage: lint
+  script:
+    - pre-commit run --all-files --show-diff-on-failure
+  tags:
+    - ezenplo
+
+unit-test:
+  stage: test
+  script:
+    - pytest tests/
+  tags:
+    - ezenplo
