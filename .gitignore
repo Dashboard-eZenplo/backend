@@ -1,79 +1,41 @@
-# Environments
+# Virtual Environments
 venv/
 .env
+ENV/
+env.bak/
+env/
 
-# Python specific
+# Python Specific
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
 
-# Caches
+# Caches and Logs
 *.sqlite3
 *.db
 *.log
 *.pot
-*.pyc
 .cache/
-*.mypy_cache/
-*.pytest_cache/
-__pycache__/
-*.py[cod]
-*.pyo
 .mypy_cache/
 .pytest_cache/
 .coverage
-.pytest_cache/
 .coverage.*
-
-# PyInstaller
-#  Usually these files are written by a Python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-noxfile-configs_*/
-.coverage
-.coverage.*
-.cache
 nosetests.xml
 coverage.xml
-*.cover
 .hypothesis/
 *.prof
 .prof
+
+# Unit Test / Coverage Reports
+htmlcov/
+.tox/
+noxfile-configs_*/
 flake-report/
 bandit_report.txt
 pylint_report.txt
 
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# macOS
-.DS_Store
-
-# Virtual environments
-venv/
-ENV/
-env.bak/
-env/
-
-
-# Temporary files
-*.bak
-*.swp
-*.temp
-*.tmp
-~*
-
-# Distribution / packaging
+# Distribution / Packaging
 .Python
 build/
 develop-eggs/
@@ -93,19 +55,31 @@ share/python-wheels/
 *.egg
 MANIFEST
 
-# Logs and databases
-*.log
-*.sqlite3
+# PyInstaller
+#  Usually these files are written by a Python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
 
-# Pyre type checker
-.pyre/
+# Installer Logs
+pip-log.txt
+pip-delete-this-directory.txt
 
-# Pyright type checker
-.pyright/
+# Jupyter Notebook
+.ipynb_checkpoints
 
-# Other files
+# macOS Specific
+.DS_Store
+
+# Temporary Files
 *.bak
 *.swp
-*.tmp
 *.temp
-*~
+*.tmp
+~*
+
+# Pyre Type Checker
+.pyre/
+
+# Pyright Type Checker
+.pyright/
