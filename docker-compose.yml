@@ -1,7 +1,8 @@
+version: '3.8'
+
 services:
   db:
     image: mysql:5.7
-    platform: linux/amd64
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: admin
