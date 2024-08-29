@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS  ezenplo_db.user (
+    id INT(10) NOT NULL AUTO_INCREMENT,
+    name VARCHAR(70) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    cnpj VARCHAR(255) NOT NULL,
+    admin BOOLEAN DEFAULT FALSE,
+    PRIMARY KEY (id)
+);
