@@ -131,6 +131,46 @@ pre-commit install
  source venv/bin/activate.
 ```
 
+## 9. Instalando o Docker (WSL)
+
+### Passos de Instalação
+
+1. **Instalar o Docker Desktop**
+
+   - Acesse o [site oficial do Docker Desktop](https://docs.docker.com/desktop/install/ubuntu/)
+
+3. **Verificar a Instalação**
+
+   - Abra o terminal da sua distribuição Linux (ex.: Ubuntu) dentro do WSL.
+   - Execute o comando `docker --version` para verificar se o Docker está instalado corretamente.
+   - Execute o comando `docker compose --version` para verificar se o Docker Compose está instalado.
+
+---
+
+## 10. Instalação no macOS
+
+### Pré-requisitos
+- **macOS** atualizado para uma versão recente.
+
+### Passos de Instalação
+
+1. **Instalar o Docker Desktop**
+
+   - Acesse o [site oficial do Docker Desktop](https://www.docker.com/products/docker-desktop) e baixe o instalador para macOS.
+   - Abra o arquivo `.dmg` baixado e arraste o ícone do Docker para a pasta de Aplicativos.
+   - Abra o Docker a partir da pasta de Aplicativos.
+
+2. **Configurar o Docker Desktop**
+
+   - Após a instalação, o Docker será iniciado automaticamente.
+   - Você verá o ícone do Docker na barra de menus. Clique nele para acessar as configurações.
+
+3. **Verificar a Instalação**
+
+   - Abra o terminal no macOS.
+   - Execute o comando `docker --version` para verificar se o Docker está instalado corretamente.
+   - Execute o comando `docker-compose --version` para verificar se o Docker Compose está instalado.
+
 ---
 
 # Testando localmente
@@ -143,6 +183,16 @@ Para rodar a API, basta ir ao menu lateral localizado à esquerda e clicar no í
 
 Para testar os Endpoints, com a API rodando, pode-se tanto utilizar o Postman (ou algum programa similar) como também via browser pelo endereço: **[localhost/8000/docs#/](http://localhost:8000/docs#/)**
 
+## 3. Rodar via Docker (Backend e MySQL)
+
+Para rodar o backend juntamente com o MySQL, com o docker compose instalado de forma correta, no terminal:
+
+```bash
+sudo doker compose up --build
+```
+```bash
+sudo docker compose up
+```
 # GitFlow
 
 ## Main
