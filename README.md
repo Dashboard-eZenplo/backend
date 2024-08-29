@@ -188,7 +188,7 @@ Para testar os Endpoints, com a API rodando, pode-se tanto utilizar o Postman (o
 Para rodar o backend juntamente com o MySQL, com o docker compose instalado de forma correta, no terminal:
 
 ```bash
-sudo doker compose up --build
+sudo docker compose up --build
 ```
 ```bash
 sudo docker compose up
