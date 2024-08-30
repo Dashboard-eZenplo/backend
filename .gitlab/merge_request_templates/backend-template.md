@@ -1,17 +1,17 @@
-## Descrição
+## Description
 
-[Descreva brevemente o propósito e as principais mudanças e adições que foram feitas nesta solicitação de Merge]
+[Briefly describe the purpose and the main changes and additions made in this Merge Request]
 
-## Link da Tarefa
+## Task Link
 
-[Inserir link da tarefa do Trello]
+[Insert ClickUp task link with format #number]
 
-## Checklist
+## Screenshots of the Screen/Component
 
-- [ ] Não deixou string literais no código.
-- [ ] Não deixou código comentado.
-- [ ] Realizou testes unitários
+[Add relevant screenshots or images, if necessary.]
 
-## Screenshots dos testes adicionados
+## Checklist (for AGES III)
 
-[Adicione capturas de tela]
+- [ ] No literal strings left in the code.
+- [ ] Used the standardized variables from the design system (color, titles/fonts).
+- [ ] No commented-out code left.
