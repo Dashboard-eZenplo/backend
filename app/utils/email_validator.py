@@ -1,13 +1,13 @@
 import re
 
 
-def email_validator(email):
+async def email_validator(email):
     """
-    Função para validar a estrutura do e-mail
+    Function to validate the structure of the email.
     """
     regex = r"^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$"
 
     if not re.fullmatch(regex, email):
-        raise ValueError("E-mail nao esta dentro dos padroes")
+        return "Email is not in the correct format."
 
-    return email
+    return None

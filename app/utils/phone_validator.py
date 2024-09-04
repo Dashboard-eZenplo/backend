@@ -1,18 +1,18 @@
 import re
 
 
-def phone_validator(phone):
+async def phone_validator(phone):
     """
-    Função para validar a estrutura do telefone
+    Function to validate the structure of the phone number.
     """
     phone = re.sub(r"\D", "", phone)
 
     if len(phone) != 11:
-        raise ValueError("Telefone possui mais digitos que o normal")
+        return "Phone number has an incorrect number of digits."
 
     regex = r"^[1-9]{2}9[0-9]{8}$"
 
     if not re.fullmatch(regex, phone):
-        raise ValueError("Telefone nao esta dentro dos padroes")
+        return "Phone number is not in the correct format."
 
-    return phone
+    return None
