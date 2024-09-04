@@ -27,3 +27,4 @@ async def create_user(user: UserBase):
     """
     Creates the user in the database.
     """
+    return {"message": "Succesfully create user", "type": 201}
