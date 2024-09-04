@@ -9,8 +9,7 @@ router = APIRouter()
 @router.post("/register/")
 async def register_user(user: UserBase):
     """
-    Rota para cadastrar um novo usuário
+    Register user route
     """
 
-    result = await process_register(user)
-    return {"message": "Usuário cadastrado com sucesso", "result": result}
+    return await process_register(user)
