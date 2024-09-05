@@ -8,7 +8,7 @@ def init_db():
     """
     try:
         connection = mysql.connector.connect(
-            host="localhost", user="admin", password="admin", database="ezenplo_db"
+            host="db", user="admin", password="admin", database="ezenplo_db"
         )
         if connection.is_connected():
             print("Successfully connected to the database.")
@@ -27,7 +27,7 @@ def close_db(connection):
         print("Database connection closed.")
 
 
-def fetch_data(query):
+async def fetch_data(query):
     """
     Fetch data from the database.
     """

@@ -15,7 +15,7 @@ async def register_user(user: UserBase):
     return await process_register(user)
 
 
-@router.get("/users/")
+@router.get("/")
 async def list_users():
     """
     Route to list all users in the database.

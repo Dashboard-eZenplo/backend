@@ -54,4 +54,4 @@ async def get_all_users():
     Get all users from the database.
     """
     query = "SELECT * FROM users"
-    return fetch_data(query)
+    return await fetch_data(query)
