@@ -24,7 +24,7 @@ def close_db(connection):
         connection.close()
 
 
-async def fetch_data(query):
+async def fetch_data(query, params: tuple = ()):
     """
     Fetch data from the database.
     """
@@ -34,7 +34,7 @@ async def fetch_data(query):
 
     try:
         cursor = connection.cursor()
-        cursor.execute(query)
+        cursor.execute(query, params)
         results = cursor.fetchall()
         return results
     except Error as e:
