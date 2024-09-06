@@ -55,6 +55,7 @@ async def get_all_users():
     Get all users from the database.
     """
     query = "SELECT * FROM user"
+
     return await fetch_data(query)
 
 
@@ -62,6 +63,15 @@ async def get_user_id(id: int):
     """
     Get a user from the database.
     """
-    query = f"SELECT * FROM user WHERE id = {id}"
+    query = "SELECT * FROM user WHERE id = %s"
 
-    return await fetch_data(query)
+    return await fetch_data(query, (id,))
+
+
+async def get_user_email(email: str):
+    """
+    Get a user by email from the database.
+    """
+    query = "SELECT * FROM user WHERE email = %s"
+
+    return await fetch_data(query, (email,))
