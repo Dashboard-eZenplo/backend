@@ -75,3 +75,12 @@ async def get_user_email(email: str):
     query = "SELECT * FROM user WHERE email = %s"
 
     return await fetch_data(query, (email,))
+
+
+async def get_user_password(email: str):
+    """
+    Get a user password by email from the database.
+    """
+    query = "SELECT password FROM user WHERE email = %s"
+
+    return await fetch_data(query, (email,))
