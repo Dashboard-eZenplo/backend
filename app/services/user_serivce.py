@@ -41,17 +41,20 @@ async def create_user(user: UserBase):
         user.admin,
     )
 
+    print(f"Inserting data: {user_data}")
+
     success = insert_data(insert_query, user_data)
 
-    if success:
-        return {"message": "User created successfully"}
-    else:
-        return {"message": "Error while creating user"}
+    return {
+        "message": "User created successfully"
+        if success
+        else "Error while creating user"
+    }
 
 
 async def get_all_users():
     """
     Get all users from the database.
     """
-    query = "SELECT * FROM users"
+    query = "SELECT * FROM user"
     return await fetch_data(query)
