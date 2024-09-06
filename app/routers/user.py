@@ -3,7 +3,7 @@ from fastapi import APIRouter, HTTPException
 from app.schemas.user import UserBase
 from app.services.user_serivce import *
 
-router = APIRouter()
+router = APIRouter(prefix="/user", tags=["User"])
 
 
 @router.post("/register/")
