@@ -8,13 +8,11 @@ def init_db():
     """
     try:
         connection = mysql.connector.connect(
-            host="db", user="admin", password="admin", database="ezenplo_db"
+            host="localhost", user="admin", password="admin", database="ezenplo_db"
         )
         if connection.is_connected():
-            print("Successfully connected to the database.")
             return connection
-    except Error as e:
-        print(f"Error connecting to MySQL: {e}")
+    except Error:
         return None
 
 
@@ -24,7 +22,6 @@ def close_db(connection):
     """
     if connection.is_connected():
         connection.close()
-        print("Database connection closed.")
 
 
 async def fetch_data(query):
@@ -41,7 +38,7 @@ async def fetch_data(query):
         results = cursor.fetchall()
         return results
     except Error as e:
-        print(f"Error executing query: {e}")
+        raise RuntimeError(f"Error executing query: {e}")
     finally:
         cursor.close()
         close_db(connection)
@@ -59,11 +56,9 @@ def insert_data(query, data):
         cursor = connection.cursor()
         cursor.execute(query, data)
         connection.commit()
-        print(f"{cursor.rowcount} record(s) inserted.")
         return True
     except Error as e:
-        print(f"Error inserting data: {e}")
-        return False
+        raise RuntimeError(f"Error inserting data: {e}")
     finally:
         cursor.close()
         close_db(connection)
