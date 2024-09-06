@@ -28,20 +28,18 @@ async def create_user(user: UserBase):
     Creates the user in the database.
     """
     insert_query = """
-    INSERT INTO users (name, cnpj, phone, email, password, admin)
+    INSERT INTO user (name, email, password, cnpj, phone, admin)
     VALUES (%s, %s, %s, %s, %s, %s)
     """
 
     user_data = (
         user.name,
-        user.cnpj,
-        user.phone,
         user.email,
         user.password,
+        user.cnpj,
+        user.phone,
         user.admin,
     )
-
-    print(f"Inserting data: {user_data}")
 
     success = insert_data(insert_query, user_data)
 
@@ -57,4 +55,13 @@ async def get_all_users():
     Get all users from the database.
     """
     query = "SELECT * FROM user"
+    return await fetch_data(query)
+
+
+async def get_user_id(id: int):
+    """
+    Get a user from the database.
+    """
+    query = f"SELECT * FROM user WHERE id = {id}"
+
     return await fetch_data(query)
