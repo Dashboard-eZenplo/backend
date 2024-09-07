@@ -1,10 +1,8 @@
-USE ages;
-
-CREATE TABLE ages.employee (
+CREATE TABLE IF NOT EXISTS ezenplo_db.employee (
     id INT(10) NOT NULL AUTO_INCREMENT,
-    user_id INT(10),
+    user_id INT(10) NOT NULL,
     name VARCHAR(70) NOT NULL,
-    email VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
     city VARCHAR(100),
     street VARCHAR(150),
     complement VARCHAR(100),
@@ -30,6 +28,6 @@ CREATE TABLE ages.employee (
     number_of_promotions INT(2),
     number_of_warnings INT(2),
     PRIMARY KEY (id),
-    FOREIGN KEY (user_id) REFERENCES user(id),
-    UNIQUE KEY (email)
+    UNIQUE (email),
+    FOREIGN KEY (user_id) REFERENCES user(id)
 );
