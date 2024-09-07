@@ -8,6 +8,6 @@ async def email_validator(email):
     regex = r"^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$"
 
     if not re.fullmatch(regex, email):
-        return "Email is not in the correct format."
+        return "Invalid email."
 
     return None
