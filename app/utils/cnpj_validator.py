@@ -24,6 +24,6 @@ async def cnpj_validator(cnpj):
     val2 = calculate_digit(cnpj[:12] + str(val1), weights, True)
 
     if int(cnpj[12]) != val1 or int(cnpj[13]) != val2:
-        return "CNPJ check digits do not conform to the standard."
+        return "Invalid CNPJ."
 
     return None

@@ -54,13 +54,11 @@ async def login_user(email: str, password: str):
     user = await get_user_password(email)
 
     if not user or not isinstance(user, list) or not isinstance(user[0], tuple):
-        raise HTTPException(
-            status_code=404, detail="Email is invalid or does not exist"
-        )
+        raise HTTPException(status_code=404, detail="Invalid email or password")
 
     user_password = user[0][0]
 
     if user_password == password:
         return {"message": "User successfully logged in"}
     else:
-        raise HTTPException(status_code=400, detail="Invalid password")
+        raise HTTPException(status_code=400, detail="Invalid email or password")
