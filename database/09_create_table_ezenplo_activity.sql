@@ -1,3 +1,5 @@
+USE ezenplo;
+
 CREATE TABLE ezenplo.activity (
     id INT(10) NOT NULL AUTO_INCREMENT,
     location_id INT(10) NOT NULL,

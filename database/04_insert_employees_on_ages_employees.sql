@@ -1,3 +1,5 @@
+USE ages;
+
 INSERT INTO ages.employee (user_id, name, email, city, street, complement, neighborhood, country, postal_code, gender, civil_state, birth_date, admission_date, height, weight, ethnicity, number_of_children, company, position, department, area, branch, salary_range, education_level, psychosocial_illnesses, number_of_promotions, number_of_warnings) VALUES
 (3, 'Jose Souza', 'jose.souza@ezenplo.com', 'Sao Paulo', 'Rua das Flores, 123', 'Apto 45', 'Centro', 'Brasil', '01001000', 'M', 'Casado', '1985-02-10', '2010-03-15', 1.75, 80.5, 'Pardo', 2, 'Empresa XYZ', 'HR Manager', 'Recursos Humanos', 'RH', 'Filial SP', '6000-8000', 'Ensino Superior Completo', 'Nenhuma', 2, 1),
 (4, 'Ana Santos', 'ana.santos@ezenplo.com', 'Rio de Janeiro', 'Av. Atlantica, 500', 'Cobertura', 'Copacabana', 'Brasil', '22021001', 'F', 'Solteira', '1990-05-25', '2015-07-01', 1.65, 60.0, 'Branca', 0, 'Empresa XYZ', 'HR Manager', 'Recursos Humanos', 'RH', 'Filial RJ', '6000-8000', 'Ensino Superior Completo', 'Ansiedade', 1, 0),

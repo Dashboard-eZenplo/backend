@@ -1,3 +1,5 @@
+USE ezenplo;
+
 CREATE TABLE ezenplo.activity_time (
     activity_id INT(10) NOT NULL,
     timekeeper INT(11) DEFAULT NULL,

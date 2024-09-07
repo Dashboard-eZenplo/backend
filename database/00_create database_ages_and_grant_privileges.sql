@@ -1,0 +1,6 @@
+GRANT ALL PRIVILEGES ON ages_db.* TO 'admin'@'%';
+GRANT ALL PRIVILEGES ON ezenplo_db.* TO 'admin'@'%';
+
+FLUSH PRIVILEGES;
+
+CREATE DATABASE IF NOT EXISTS ages;

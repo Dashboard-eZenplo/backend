@@ -1,3 +1,5 @@
+USE ezenplo;
+
 CREATE TABLE ezenplo.city (
     id INT(10) NOT NULL AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,

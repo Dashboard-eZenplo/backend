@@ -1,3 +1,5 @@
+USE ages;
+
 CREATE TABLE ages.user (
     id INT(10) NOT NULL AUTO_INCREMENT,
     name VARCHAR(70) NOT NULL,

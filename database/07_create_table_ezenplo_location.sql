@@ -1,3 +1,5 @@
+USE ezenplo;
+
 CREATE TABLE ezenplo.location (
     id INT(10) NOT NULL AUTO_INCREMENT,
     app_user_id INT(10) NOT NULL,

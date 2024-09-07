@@ -1,3 +1,5 @@
+USE ezenplo;
+
 CREATE TABLE ezenplo.address (
     id INT(10) NOT NULL AUTO_INCREMENT,
     city_id INT(10) NOT NULL,
