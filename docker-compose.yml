@@ -6,6 +6,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: ezenplo_db
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
     ports:
