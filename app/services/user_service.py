@@ -28,7 +28,7 @@ async def create_user(user: UserBase):
     Creates the user in the database.
     """
     insert_query = """
-    INSERT INTO user (name, email, password, cnpj, phone, admin)
+    INSERT INTO ages.user (name, email, password, cnpj, phone, admin)
     VALUES (%s, %s, %s, %s, %s, %s)
     """
 
@@ -54,7 +54,7 @@ async def get_all_users():
     """
     Get all users from the database.
     """
-    query = "SELECT * FROM user"
+    query = "SELECT * FROM ages.user"
 
     return await fetch_data(query)
 
@@ -63,7 +63,7 @@ async def get_user_id(id: int):
     """
     Get a user from the database.
     """
-    query = "SELECT * FROM user WHERE id = %s"
+    query = "SELECT * FROM ages.user WHERE id = %s"
 
     return await fetch_data(query, (id,))
 
@@ -72,7 +72,7 @@ async def get_user_email(email: str):
     """
     Get a user by email from the database.
     """
-    query = "SELECT * FROM user WHERE email = %s"
+    query = "SELECT * FROM ages.user WHERE email = %s"
 
     return await fetch_data(query, (email,))
 
@@ -81,6 +81,6 @@ async def get_user_password(email: str):
     """
     Get a user password by email from the database.
     """
-    query = "SELECT password FROM user WHERE email = %s"
+    query = "SELECT password FROM ages.user WHERE email = %s"
 
     return await fetch_data(query, (email,))

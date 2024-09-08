@@ -13,16 +13,22 @@ services:
       - ./database:/docker-entrypoint-initdb.d/:ro
     networks:
       - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost"]
+      interval: 10s
+      retries: 5
+      timeout: 2s
+      start_period: 30s
 
   backend:
     build: .
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    command: sh -c "sleep 15 && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
     volumes:
       - .:/app
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: mysql://root:admin@db:3306/ezenplo_db
+      DATABASE_URL: mysql://root:admin@db:3306
     depends_on:
       - db
     networks:

@@ -1,12 +1,10 @@
-import re
-
-
 async def cnpj_validator(cnpj):
     """
     Function to validate the CNPJ.
     Validates both the length and the check digits.
     """
-    cnpj = re.sub(r"\D", "", cnpj)
+    if not cnpj.isdigit():
+        return "CNPJ must contain only numbers."
 
     if len(cnpj) != 14:
         return "CNPJ must contain 14 digits."
