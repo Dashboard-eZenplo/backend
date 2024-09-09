@@ -16,7 +16,7 @@ async def process_register(user: UserBase):
     for validate in validations:
         error = await validate()
         if error:
-            return {"message": "Error while validating user", "type": error}
+            raise HTTPException(status_code=400, detail=error)
 
     return await create_user(user)
 
