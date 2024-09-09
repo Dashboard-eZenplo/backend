@@ -1,3 +1,5 @@
+USE ezenplo;
+
 CREATE TABLE ezenplo.app_user (
     id INT(10) NOT NULL AUTO_INCREMENT,
     name VARCHAR(70) NOT NULL,

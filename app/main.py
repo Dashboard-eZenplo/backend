@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
-from app.routers import csv
+from app.routers import init_app
 
 app = FastAPI()
 
-app.include_router(csv.router, prefix="/csv", tags=["CSV Operations"])
+init_app(app)

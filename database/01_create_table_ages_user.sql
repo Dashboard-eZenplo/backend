@@ -6,7 +6,7 @@ CREATE TABLE ages.user (
     email VARCHAR(255) NOT NULL,
     phone VARCHAR(20),
     password VARCHAR(255) NOT NULL,
-    cnpj VARCHAR(255) NOT NULL,
+    cnpj VARCHAR(14) NOT NULL,
     admin BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (id),
     UNIQUE KEY (email)

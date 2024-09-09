@@ -5,7 +5,7 @@ from fastapi.responses import FileResponse
 
 from app.services.csv_service import process_csv
 
-router = APIRouter()
+router = APIRouter(prefix="/csv", tags=["CSV"])
 
 CSV_BASE_PATH = Path("app/static/template/base_template.csv")
 
