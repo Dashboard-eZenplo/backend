@@ -1,12 +1,14 @@
 from datetime import timedelta
 
-from fastapi import APIRouter, Depends, HTTPException
-from fastapi.security import OAuth2PasswordRequestForm
+from fastapi import APIRouter, Depends, Form, HTTPException
 
 from app.schemas.user import UserBase
 from app.services.user_service import *
 from app.utils.dependencies import get_current_user
 from app.utils.jwt_handler import *
+
+# from fastapi.security import OAuth2PasswordRequestForm
+
 
 router = APIRouter(prefix="/user", tags=["User"])
 
@@ -63,21 +65,24 @@ async def get_user(id: int):
 
 
 @router.post("/login/")
-async def login_user(form_data: OAuth2PasswordRequestForm = Depends()):
+async def login_user(
+    email: str = Form(..., description="Email"),
+    password: str = Form(..., description="Password"),
+):
     """
     Route to login a user. Accessible without a token.
     """
-    email = form_data.username
-    password = form_data.password
+    email = email
+    user_password = password
 
     user = await get_user_password(email)
 
     if not user or not isinstance(user, list) or not isinstance(user[0], tuple):
         raise HTTPException(status_code=400, detail="Invalid email or password")
 
-    user_password = user[0][0]
+    stored_password = user[0][0]
 
-    if user_password == password:
+    if stored_password == user_password:
         access_token = create_access_token(
             data={"sub": email},
             expires_delta=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES),
