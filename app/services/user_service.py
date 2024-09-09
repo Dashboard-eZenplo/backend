@@ -42,9 +42,9 @@ async def create_user(user: UserBase):
     success = insert_data(insert_query, user_data)
 
     return {
-        "message": "User created successfully"
-        if success
-        else "Error while creating user"
+        "message": (
+            "User created successfully" if success else "Error while creating user"
+        )
     }
 
 
