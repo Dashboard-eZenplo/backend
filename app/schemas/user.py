@@ -10,5 +10,10 @@ class UserBase(BaseModel):
     admin: bool | None = Field(default=False, example=False)
 
 
+class UserLogin(BaseModel):
+    email: str = Field(..., example="user@example.com")
+    password: str = Field(..., example="strongpassword123")
+
+
 class User(UserBase):
     id: int = Field(..., example=1)
