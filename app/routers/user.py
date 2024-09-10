@@ -1,46 +1,27 @@
-from datetime import timedelta
-
-from fastapi import APIRouter, Depends, Form, HTTPException
+from fastapi import APIRouter, HTTPException
 
 from app.schemas.user import UserBase, UserLogin
 from app.services.user_service import *
-from app.utils.dependencies import get_current_user
-from app.utils.jwt_handler import *
-
-# from fastapi.security import OAuth2PasswordRequestForm
-
 
 router = APIRouter(prefix="/user", tags=["User"])
 
 
-@router.post("/register/", dependencies=[Depends(get_current_user)])
+@router.post("/register/")
 async def register_user(user: UserBase):
     """
-    Route to register a user. Requires authentication.
+    Route to register a user
     """
     user_db = await get_user_email(user.email)
     if user_db:
         raise HTTPException(status_code=400, detail="User already in database")
 
-    response = await process_register(user)
-    if response["message"] == "User created successfully":
-        access_token = create_access_token(
-            data={"sub": user.email},
-            expires_delta=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES),
-        )
-        return {
-            "message": response["message"],
-            "access_token": access_token,
-            "token_type": "bearer",
-        }
-
-    return response
+    return await process_register(user)
 
 
-@router.get("/", dependencies=[Depends(get_current_user)])
+@router.get("/")
 async def list_users():
     """
-    Route to list all users in the database. Requires authentication.
+    Route to list all users in the database.
     """
     users = await get_all_users()
     if users:
@@ -49,10 +30,10 @@ async def list_users():
         raise HTTPException(status_code=404, detail="No user found")
 
 
-@router.get("/{id}", dependencies=[Depends(get_current_user)])
+@router.get("/{id}")
 async def get_user(id: int):
     """
-    Route to get one user in the database by id. Requires authentication.
+    Route to get one user in the database by id
     """
     try:
         user = await get_user_id(id)
@@ -65,28 +46,19 @@ async def get_user(id: int):
 
 
 @router.post("/login/")
-async def login_user(
-    email: str = Form(..., description="Email"),
-    password: str = Form(..., description="Password"),
-):
+async def login_user(login: UserLogin):
     """
-    Route to login a user. Accessible without a token.
+    Route to login a user
     """
-    email = email
-    user_password = password
 
     user = await get_user_password(login.email)
 
     if not user or not isinstance(user, list) or not isinstance(user[0], tuple):
-        raise HTTPException(status_code=400, detail="Invalid email or password")
+        raise HTTPException(status_code=404, detail="Invalid email or password")
 
-    stored_password = user[0][0]
+    user_password = user[0][0]
 
-    if stored_password == user_password:
-        access_token = create_access_token(
-            data={"sub": email},
-            expires_delta=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES),
-        )
-        return {"access_token": access_token, "token_type": "bearer"}
+    if user_password == login.password:
+        return {"message": "User successfully logged in"}
     else:
         raise HTTPException(status_code=400, detail="Invalid email or password")
