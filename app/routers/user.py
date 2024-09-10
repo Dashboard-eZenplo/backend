@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 
-from app.schemas.user import UserBase
+from app.schemas.user import UserBase, UserLogin
 from app.services.user_service import *
 
 router = APIRouter(prefix="/user", tags=["User"])
@@ -45,20 +45,20 @@ async def get_user(id: int):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/login/")
-async def login_user(email: str, password: str):
+@router.post("/login/")
+async def login_user(login: UserLogin):
     """
     Route to login a user
     """
 
-    user = await get_user_password(email)
+    user = await get_user_password(login.email)
 
     if not user or not isinstance(user, list) or not isinstance(user[0], tuple):
         raise HTTPException(status_code=404, detail="Invalid email or password")
 
     user_password = user[0][0]
 
-    if user_password == password:
+    if user_password == login.password:
         return {"message": "User successfully logged in"}
     else:
         raise HTTPException(status_code=400, detail="Invalid email or password")
