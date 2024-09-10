@@ -11,8 +11,8 @@ class UserBase(BaseModel):
 
 
 class UserLogin(BaseModel):
-    email: str = Field(..., example="user@example.com")
-    password: str = Field(..., example="strongpassword123")
+    email: str = Field(..., example="joao.silva@ezenplo.com")
+    password: str = Field(..., example="senha123")
 
 
 class User(UserBase):
