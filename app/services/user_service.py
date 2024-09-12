@@ -1,8 +1,6 @@
+from app.core.database import *
 from app.schemas.user import UserBase
-from app.utils.cnpj_validator import cnpj_validator
-from app.utils.database import fetch_data, insert_data
-from app.utils.email_validator import email_validator
-from app.utils.phone_validator import phone_validator
+from app.utils.validators import *
 
 
 async def process_register(user: UserBase):
