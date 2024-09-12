@@ -1,25 +1,29 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 
 from app.schemas.user import UserBase
+from app.services.auth_service import hash_password, verify_admin
 from app.services.user_service import *
 
 router = APIRouter(prefix="/user", tags=["User"])
 
 
 @router.post("/register/")
-async def register_user(user: UserBase):
+async def register_user(user: UserBase, admin: dict = Depends(verify_admin)):
     """
-    Route to register a user
+    Route to register a user (only admins)
     """
     user_db = await get_user_email(user.email)
     if user_db:
         raise HTTPException(status_code=400, detail="User already in database")
 
+    hashed_password = hash_password(user.password)
+    user.password = hashed_password
+
     return await process_register(user)
 
 
 @router.get("/")
-async def list_users():
+async def list_users(admin: dict = Depends(verify_admin)):
     """
     Route to list all users in the database.
     """
@@ -31,7 +35,7 @@ async def list_users():
 
 
 @router.get("/{id}")
-async def get_user(id: int):
+async def get_user(id: int, admin: dict = Depends(verify_admin)):
     """
     Route to get one user in the database by id
     """
