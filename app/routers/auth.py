@@ -1,6 +1,7 @@
-from fastapi import APIRouter, HTTPException, Request
+from fastapi import APIRouter, HTTPException
 from jose import JWTError
 
+from app.schemas.auth import LoginRequest, RefreshRequest
 from app.services.auth_service import authenticate_user
 from app.services.jwt_service import *
 from app.services.user_service import get_user_email
@@ -9,10 +10,9 @@ router = APIRouter(prefix="/auth", tags=["Auth"])
 
 
 @router.post("/login/")
-async def auth(request: Request):
-    body = await request.json()
-    email = body.get("email")
-    password = body.get("password")
+async def auth(request: LoginRequest):
+    email = request.email
+    password = request.password
 
     if not email or not password:
         raise HTTPException(status_code=400, detail="Email and password are required")
@@ -26,9 +26,8 @@ async def auth(request: Request):
 
 
 @router.post("/refresh/")
-async def refresh_token(request: Request):
-    body = await request.json()
-    refresh_token = body.get("refresh_token")
+async def refresh_token(request: RefreshRequest):
+    refresh_token = request.refresh_token
 
     if not refresh_token:
         raise HTTPException(status_code=400, detail="Refresh token is required")
