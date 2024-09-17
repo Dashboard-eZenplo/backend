@@ -4,8 +4,8 @@ from jose import JWTError
 from passlib.context import CryptContext
 from starlette.status import HTTP_403_FORBIDDEN
 
+from app.auth.jwt_service import extract_all_claims
 from app.schemas.user import UserBase
-from app.services.jwt_service import extract_all_claims
 from app.services.user_service import get_user_email
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")

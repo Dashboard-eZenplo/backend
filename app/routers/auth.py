@@ -1,9 +1,9 @@
 from fastapi import APIRouter, HTTPException
 from jose import JWTError
 
+from app.auth.auth_service import authenticate_user
+from app.auth.jwt_service import *
 from app.schemas.auth import LoginRequest, RefreshRequest
-from app.services.auth_service import authenticate_user
-from app.services.jwt_service import *
 from app.services.user_service import get_user_email
 
 router = APIRouter(prefix="/auth", tags=["Auth"])

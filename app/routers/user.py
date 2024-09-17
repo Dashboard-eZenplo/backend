@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 
+from app.auth.auth_service import hash_password, verify_admin
 from app.schemas.user import UserBase, UserLogin
-from app.services.auth_service import hash_password, verify_admin
 from app.services.user_service import *
 
 router = APIRouter(prefix="/user", tags=["User"])
