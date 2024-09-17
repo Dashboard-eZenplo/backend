@@ -42,9 +42,9 @@ async def create_user(user: UserBase):
     success = insert_data(insert_query, user_data)
 
     return {
-        "message": "User created successfully"
-        if success
-        else "Error while creating user"
+        "message": (
+            "User created successfully" if success else "Error while creating user"
+        )
     }
 
 
@@ -71,8 +71,12 @@ async def get_user_email(email: str):
     Get a user by email from the database.
     """
     query = "SELECT * FROM ages.user WHERE email = %s"
+    results = await fetch_data(query, (email,))
 
-    return await fetch_data(query, (email,))
+    if results:
+        return results[0]
+
+    return None
 
 
 async def get_user_password(email: str):
